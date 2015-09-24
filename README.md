@@ -11,7 +11,7 @@ I'd much rather ask an object if it was in a list. It just feels like it's the
 right way round:
 
 ```ruby
-thing.in?('Egg', 'Bacon', 'Sausage')
+thing.in?(['Egg', 'Bacon', 'Sausage'])
 ```
 
 ## Installation
@@ -37,10 +37,14 @@ Require Inny and then start testing your objects:
 ```ruby
 require 'inny'
 
-object.in?('Foo', 'Bar')
+object.in?(['Foo', 'Bar'])
+
+'Foo'.in?('Foobar')
+
+5.in?(1..10)
 
 list = [1, 2, 3]
-puts "Yay!" if 2.in?(*list)
+puts "Yay!" if 2.in?(list)
 ```
 
 ## Development
