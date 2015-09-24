@@ -6,19 +6,24 @@ class InnyTest < Minitest::Test
   end
 
   def test_it_finds_integers
-    assert 8.in?(1, 2, 3) == false
-    assert 8.in?(7, 8, 9) == true
+    assert 8.in?([7, 8, 9])
+    refute 8.in?([1, 2, 3])
   end
 
   def test_it_finds_strings
-    assert 'Egg'.in?('Apple', 'Orange', 'Banana') == false
-    assert 'Egg'.in?('Bacon', 'Sausage', 'Egg') == true
+    assert 'Egg'.in?(['Bacon', 'Sausage', 'Egg'])
+    refute 'Egg'.in?(['Apple', 'Orange', 'Banana'])
+  end
+
+  def test_it_finds_substrings
+    assert 'bar'.in?('Foobar')
+    refute 'egg'.in?('Foobar')
   end
 
   def test_it_finds_things_in_an_array
     list = ['John', 'Jimmy', 'Robert']
 
-    assert 'John Paul'.in?(*list) == false
-    assert 'Jimmy'.in?(*list) == true
+    assert 'Jimmy'.in?(list)
+    refute 'John Paul'.in?(list)
   end
 end
